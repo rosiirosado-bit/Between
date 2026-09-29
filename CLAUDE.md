@@ -107,14 +107,16 @@ Don't claim something works on a device unless it was run on one. Say "unit-test
 
 ```bash
 npm install          # install dependencies
-npx expo start       # start the dev server; press "i" to open the iOS Simulator (Mac + Xcode)
+npx expo start       # start the dev server; scan the QR code with the iPhone camera to open in Expo Go
+                     # (press "i" for the iOS Simulator if Xcode is installed; optional)
 npm test             # run unit and component tests
 npm run lint         # lint
 npm run typecheck    # TypeScript check
 ```
 
-To try it on an iPhone, use a development build (`npx expo run:ios --device` on the Mac, or an
-EAS development build). Some features (purchases, some audio behavior) won't work in Expo Go.
+The founder tests on a real iPhone, without Xcode. Use Expo Go until a feature needs native code
+Expo Go doesn't include (purchases via RevenueCat, from BUILD_PLAN Step 12). From then on, use an EAS
+cloud development build. Keep the project on the SDK version the current App Store Expo Go supports.
 
 ## Git
 

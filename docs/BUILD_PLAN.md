@@ -45,8 +45,13 @@ and maintaining a second app. With Expo, Android later is mostly testing and pol
 - Keep platform-specific code in `*.ios.tsx` / `*.android.tsx` files so Android can be added later
   without touching iOS code.
 
-**Using your Mac:** install Xcode so you can run the app in the iOS Simulator and make local builds.
-The cloud sessions write and unit-test the code; you pull the branch on your Mac to try it.
+**Testing on your iPhone (no Xcode needed):**
+- **Steps 1–11:** the free **Expo Go** app on your iPhone. Run `npx expo start` on your Mac (needs only
+  Node.js) and scan the QR code with the iPhone camera. Use the latest Expo SDK so it matches Expo Go.
+- **Step 12 onward** (purchases need native code Expo Go doesn't include): a **development build** made
+  in the cloud with EAS Build and installed on your phone. Needs the Apple Developer account.
+- **Beta:** TestFlight builds, also made with EAS in the cloud.
+- Xcode is optional. It only adds the on-screen iPhone Simulator.
 
 ---
 
@@ -76,9 +81,10 @@ React Native Testing Library). Add:
 - Tab navigation: Home, Write, Archive, with Settings from a small top control.
 - All user-facing strings in a single strings file (PRD §10 localization).
 Keep screens as simple placeholders. iOS is the only launch target, but don't
-write anything that would block Android later. Give me step-by-step instructions
-(I'm not a developer) to pull this branch on my Mac and open the app in the iOS
-Simulator and on my iPhone.
+write anything that would block Android later. Use the latest Expo SDK so the
+app opens in Expo Go. Give me step-by-step instructions (I'm not a developer,
+and I don't have Xcode) to pull this branch on my Mac and open the app on my
+iPhone with Expo Go.
 Commit and push.
 ```
 
