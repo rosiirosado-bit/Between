@@ -34,9 +34,19 @@ then move on. This follows the PRD §13 handoff: **build one vertical flow first
   `expo-audio` (recording), `expo-haptics`, `expo-notifications`, `expo-secure-store`,
   RevenueCat (App Store subscriptions), Supabase (accounts + sync with per-user access rules).
 
-**Alternative:** native SwiftUI. It feels slightly more "iOS", but it requires a Mac with Xcode for every
-build and test, and web/Android would mean rewriting the app. Only choose it if you have a Mac and
-are sure you'll stay iPhone-only.
+**Decision (confirmed by founder):** Expo. The app is iPhone-only for roughly the first year, with
+Android planned after. Native SwiftUI was considered and rejected: Android would then mean building
+and maintaining a second app. With Expo, Android later is mostly testing and polish.
+
+**Guardrails so it still feels like a native iOS app (PRD §4):**
+- Build and polish for iOS first. Don't spend time on Android layouts until the Android phase.
+- Use native iOS behaviors: native tab bar, bottom sheets, haptics, swipe-back, Dynamic Type,
+  VoiceOver, and keyboard avoidance on the writing screen.
+- Keep platform-specific code in `*.ios.tsx` / `*.android.tsx` files so Android can be added later
+  without touching iOS code.
+
+**Using your Mac:** install Xcode so you can run the app in the iOS Simulator and make local builds.
+The cloud sessions write and unit-test the code; you pull the branch on your Mac to try it.
 
 ---
 
@@ -65,7 +75,10 @@ React Native Testing Library). Add:
   and document them in docs/DESIGN.md.
 - Tab navigation: Home, Write, Archive, with Settings from a small top control.
 - All user-facing strings in a single strings file (PRD §10 localization).
-Keep screens as simple placeholders. Show me how to open it on my iPhone.
+Keep screens as simple placeholders. iOS is the only launch target, but don't
+write anything that would block Android later. Give me step-by-step instructions
+(I'm not a developer) to pull this branch on my Mac and open the app in the iOS
+Simulator and on my iPhone.
 Commit and push.
 ```
 
